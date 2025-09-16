@@ -6,7 +6,7 @@ const AuthLayout = ({ children }) => {
   return (
     <div
       className="auth-layout"
-      style={{ backgroundImage: `url(${BG_IMG})` }} // ✅ Fixed
+      style={{ backgroundImage: `url(${BG_IMG})` }} 
     >
       <div className="auth-left">{children}</div>
     </div>

@@ -4,22 +4,35 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser =require("body-parser");
 const path = require("path");
-const cokkieParser = require("cookie-parser");
-require ("dotenv").config();
+const cookieParser = require("cookie-parser");
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
+
 
 // Middleware to parse JSON
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cokkieParser());
+app.use(cookieParser());
 
 // Optional: parse URL-encoded bodies (for forms)
 app.use(express.urlencoded({ extended: true }));
 
+//MongoDB connection
+const URL= "mongodb+srv://achinifernando401:05T4v8GBwkd90Unb@cluster0.iecga0o.mongodb.net/";
+mongoose.connect(URL)
+  .then(() => {
+    console.log("✅ Database connected successfully..");
+    
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err.message);
+  });
+app.listen(PORT, () => {
+            console.log(`Server is running on port: ${PORT}`);
+        });
 //Routes
 
 const usersRouter = require("./routes/clientRoute.js");
@@ -53,24 +66,12 @@ const stocktRouter = require("./routes/stockRouter.js");
 app.use("/stock" ,stocktRouter); 
 
 
+
+
 // Make uploads folder public
 app.use("/files", express.static(path.join(__dirname, "uploads")));
 
 
 
-//MongoDB connection
-const MONGODB_URL= process.env.MONGODB_URL;
-mongoose.connect(MONGODB_URL,{
-    
-    useNewUrlParser:true,
-    useUnifiedTopology: true,
-    
-})
 
-.then(() => {
-        console.log('Database connected successfully..');
-        app.listen(PORT, () => {
-            console.log(`Server is running on port: ${PORT}`);
-        });
-    })
-    .catch(err => console.error('Error in database connecting:', err));
+ 

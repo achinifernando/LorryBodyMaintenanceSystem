@@ -16,8 +16,7 @@ const QuotationRequestSchema = new schema({
 
   status: {type: String,enum: ["Pending", "Reviewed", "Quoted", "Rejected"],default: "Pending",},
 
-  quotedPrice: { type: Number }, // admin fills in after review
-  remarks: { type: String }, // admin notes (optional)
+
 
   createdAt: { type: Date, default: Date.now },
 });

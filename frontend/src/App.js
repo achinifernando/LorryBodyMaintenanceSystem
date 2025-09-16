@@ -16,6 +16,7 @@ import UpdateProfileForm from './components/UpdateProfileForm';
 import HomePage from './components/HomePage';
 import QuotationForm from './components/dashboard/QuotationGenerator'
 import CompanyManagerDashbord from'./components/dashboard/CompanyManagerDashbord';
+import Calendar from './components/dashboard/MeetingSheduler';
 
 
 function App() {
@@ -75,6 +76,9 @@ function App() {
 
   {/*dashboard page*/ }
   <Route path='/companyManagerDashbord' element={<CompanyManagerDashbord />} />
+
+  {/*calendar page*/ }
+  <Route path='/Calendar' element={<Calendar />} />
 
 </Routes>
 

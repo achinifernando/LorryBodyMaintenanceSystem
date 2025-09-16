@@ -78,6 +78,8 @@ function CompanyManagerDashbord() {
         </table>
       )}
     </div>
+    <Link to={`/Calendar`}>
+      <button>CompanyManagerDashbord</button></Link>
 {/* Notification */}
       {notification.show && (
         <div

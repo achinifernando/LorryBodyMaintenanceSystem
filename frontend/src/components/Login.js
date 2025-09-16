@@ -23,7 +23,7 @@ export default function Login() {
 
     if (name === "password") {
       if (!value.trim()) errMsg = "Password is required.";
-      else if (value.length < 8) errMsg = "Password must be at least 8 characters."; // ✅ Fixed
+      else if (value.length < 8) errMsg = "Password must be at least 8 characters."; 
     }
 
     setError((prev) => ({ ...prev, [name]: errMsg }));
